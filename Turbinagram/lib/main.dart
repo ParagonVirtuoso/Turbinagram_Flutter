@@ -4,7 +4,7 @@ import 'navigation/rotas.dart';
 import 'utils/strings.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-void main() async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   runApp(const MyApp());

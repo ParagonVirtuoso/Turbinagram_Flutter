@@ -12,21 +12,9 @@ class Strings {
 
   //text
   static const title = "Continuar Com o Google";
-  static const textIntro = "Vou\n";
-  static const textIntroDesc1 = "ou  \n ";
-  static const textOu = "Ou";
-  static const textIntroDesc2 = "Não Vou!";
-  static const textSmallSignUp = "Inscrever-se leva menos de 1 minuto!";
-  static const textSignIn = "Entrar";
-  static const textAvaliar = "Avaliar";
-  static const textclassificacao = "Classificações";
-  static const textConfiguracoes = "Configurações";
-  static const textPerfil = "Perfil";
-  static const textSobre = "Sobre Nós";
-  static const textSignInGoogle = "Entrar Com o Google";
-  static const textAcc = "Não tem uma conta? ";
-  static const textSignUp = "Cadastre-se aqui";
-  static const textHome = "Home";
+  static const textEntrarSlogan1 = "Tornando suas";
+  static const textEntrarSlogan2 = "ideias em realidade";
+  static const textSignInGoogle = "ENTRAR NA TECNOTRIKS COM O GOOGLE";
   static const textFalha = "Falha";
   static const textOk = "Ok";
 
