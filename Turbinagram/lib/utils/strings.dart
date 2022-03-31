@@ -22,6 +22,7 @@ class Strings {
   static const textOk = "Ok";
   static const textNome = "Seu Nome";
   static const textEmail = "E-mail";
+  static const textSenha = "Senha";
   static const textOu = "OU";
 
   //navigate
