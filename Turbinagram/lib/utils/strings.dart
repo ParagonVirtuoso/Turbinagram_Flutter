@@ -26,6 +26,10 @@ class Strings {
   static const textOu = "OU";
   static const textOla = "Olá, ";
   static const textHomeServico = "Principais Serviços";
+  static const textServico1 = "Desenvolvimento de\nWeb Sites";
+  static const textServico2 = "Artes para\nRede Sociais";
+  static const textServico3 = "Site de\nVendas";
+  static const textServico4 = "Plano\nTurbinagram";
 
   //navigate
   static const signInNavigate = '/sign-in';

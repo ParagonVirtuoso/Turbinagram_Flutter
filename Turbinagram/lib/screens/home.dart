@@ -51,7 +51,6 @@ class _HomeState extends State<Home> {
                 width: 1030.w,
                 height: 130.h,
                 margin: EdgeInsets.only(top: 100.h),
-                padding: EdgeInsets.only(right: 500.w),
                 decoration: BoxDecoration(
                     color: Strings.kDarkBlueColor,
                     borderRadius: BorderRadius.only(
@@ -60,10 +59,18 @@ class _HomeState extends State<Home> {
                       topRight: Radius.circular(40.r),
                       bottomRight: Radius.circular(40.r),
                     )),
-                child: Center(
-                  child: Text(Strings.textOla + dados![0].toString(),
-                      style: TextStyle(
-                          color: Strings.kPrimaryColor, fontSize: 45.sp)),
+                child: Container(
+                  margin: EdgeInsets.only(left: 30.w),
+                  child: Row(
+                    children: [
+                      Text(Strings.textOla,
+                          style: TextStyle(
+                              color: Strings.kPrimaryColor, fontSize: 45.sp)),
+                      Text(dados![0].toString().toUpperCase(),
+                          style: TextStyle(
+                              color: Strings.kPrimaryColor, fontSize: 46.sp,fontWeight: FontWeight.bold,))
+                    ],
+                  ),
                 ),
               ),
             ),
@@ -71,7 +78,95 @@ class _HomeState extends State<Home> {
               margin: EdgeInsets.only(top: 100.h, left: 50.w),
               child: Text(Strings.textHomeServico,
                   style:
-                      TextStyle(color: Strings.kBlackColor, fontSize: 45.sp)),
+                      TextStyle(color: Strings.kBlackColor, fontSize: 40.sp)),
+            ),
+            Center(
+              child: Container(
+                width: 1030.w,
+                height: 350.h,
+                margin: EdgeInsets.only(top: 20.h),
+                decoration: BoxDecoration(
+                    color: Strings.kDarkBlueColor,
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(30.r),
+                      bottomLeft: Radius.circular(30.r),
+                      topRight: Radius.circular(30.r),
+                      bottomRight: Radius.circular(30.r),
+                    )),
+                child: Container(
+                  margin: EdgeInsets.only(left: 30.w,right: 30.w,top: 30.h),
+                  child: Text(Strings.textServico1,
+                      style: TextStyle(
+                          color: Strings.kPrimaryColor, fontSize: 45.sp)),
+                ),
+              ),
+            ),
+            Row(
+              children: [
+                Column(
+                  children: [
+                    Container(
+                      width: 500.w,
+                      height: 350.h,
+                      margin: EdgeInsets.only(top: 20.h,left:35.w),
+                      decoration: BoxDecoration(
+                          color: Strings.kDarkBlueColor,
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(30.r),
+                            bottomLeft: Radius.circular(30.r),
+                            topRight: Radius.circular(30.r),
+                            bottomRight: Radius.circular(30.r),
+                          )),
+                      child: Container(
+                        margin: EdgeInsets.only(left: 30.w,right: 30.w,top: 30.h),
+                        child: Text(Strings.textServico2,
+                            style: TextStyle(
+                                color: Strings.kPrimaryColor, fontSize: 45.sp)),
+                      ),
+                    ),
+                    Container(
+                      width: 500.w,
+                      height: 350.h,
+                      margin: EdgeInsets.only(top: 20.h,left:35.w),
+                      decoration: BoxDecoration(
+                          color: Strings.kDarkBlueColor,
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(30.r),
+                            bottomLeft: Radius.circular(30.r),
+                            topRight: Radius.circular(30.r),
+                            bottomRight: Radius.circular(30.r),
+                          )),
+                      child: Container(
+                        margin: EdgeInsets.only(left: 30.w,right: 30.w,top: 30.h),
+                        child: Text(Strings.textServico3,
+                            style: TextStyle(
+                                color: Strings.kPrimaryColor, fontSize: 45.sp)),
+                      ),
+                    )
+                  ],
+
+                ),
+                Container(
+                  width: 500.w,
+                  height: 720.h,
+                  margin: EdgeInsets.only(top: 20.h,left:15.w,right: 30.w),
+                  decoration: BoxDecoration(
+                      color: Strings.kDarkBlueColor,
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(30.r),
+                        bottomLeft: Radius.circular(30.r),
+                        topRight: Radius.circular(30.r),
+                        bottomRight: Radius.circular(30.r),
+                      )),
+                  child: Container(
+                    margin: EdgeInsets.only(left: 30.w,right: 30.w,top: 30.h),
+                    child: Text(Strings.textServico4,
+                        textAlign: TextAlign.right,
+                        style: TextStyle(
+                            color: Strings.kPrimaryColor, fontSize: 45.sp)),
+                  ),
+                )
+              ],
             )
           ],
         )));
