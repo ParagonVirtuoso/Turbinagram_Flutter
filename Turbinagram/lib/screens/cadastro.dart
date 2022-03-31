@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:turbinagram/model/usuario.dart';
 import 'package:turbinagram/utils/strings.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:turbinagram/widgets/googlesignin.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Cadastro extends StatefulWidget {
   const Cadastro({Key? key}) : super(key: key);
@@ -14,75 +11,44 @@ class Cadastro extends StatefulWidget {
 }
 
 class _CadastroState extends State<Cadastro> {
-  //Controlador
-  final TextEditingController _controllerNome = TextEditingController();
-  final TextEditingController _controllerEmail = TextEditingController();
-  final TextEditingController _controllerSenha = TextEditingController();
+  TextEditingController _controllerNome = TextEditingController();
+  TextEditingController _controllerEmail = TextEditingController();
   String _mensagemErro = "";
 
-  _validarCampos() {
+  _validarCampos() async {
     //Recupera dados dos campos
     String nome = _controllerNome.text;
     String email = _controllerEmail.text;
-    String senha = _controllerSenha.text;
 
-    if (nome.isNotEmpty) {
-      if (email.isNotEmpty && email.contains("@")) {
-        if (senha.isNotEmpty && senha.length > 6) {
-          setState(() {
-            _mensagemErro = "";
-          });
-          Usuario usuario = Usuario();
-          usuario.nome = nome;
-          usuario.email = email;
-          usuario.senha = senha;
-          usuario.status = "Em Análise";
-          usuario.nivel = "1";
-          _cadastrarUsuario(usuario);
-        } else {
-          setState(() {
-            _mensagemErro = "Preencha a senha com no minimo 6 digitos";
-          });
-        }
-      } else {
+    if(nome.isNotEmpty){
+      if(email.isNotEmpty && email.contains("@")){
+        setState(() {
+          _mensagemErro = "";
+        });
+
+        final prefs = await SharedPreferences.getInstance();
+        await prefs.setStringList('dados', <String>[nome, email,]);
+        Navigator.pushNamedAndRemoveUntil(
+            context, Strings.homeNavigate, (route) => false);
+
+
+      }else{
         setState(() {
           _mensagemErro = "Preencha o Email corretamente";
         });
       }
-    } else {
+
+    }else{
       setState(() {
         _mensagemErro = "Preencha o Nome";
       });
+
     }
-  }
 
-  _cadastrarUsuario(Usuario usuario) {
-    FirebaseAuth auth = FirebaseAuth.instance;
-
-    auth
-        .createUserWithEmailAndPassword(
-            email: usuario.email, password: usuario.senha)
-        .then((firebaseUser) {
-      //Salvar dados do usuario
-      FirebaseFirestore db = FirebaseFirestore.instance;
-      db
-          .collection("usuarios")
-          .doc(firebaseUser.user!.uid)
-          .set(usuario.toMap());
-      Navigator.pushNamedAndRemoveUntil(
-          context, Strings.cadastroNavigate, (route) => false);
-    }).catchError((error) {
-      setState(() {
-        print(error.toString());
-        _mensagemErro =
-            "Erro ao cadastrar usuário, verifique os campos ou a conexão e tente novamente";
-      });
-    });
   }
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
     ScreenUtil.init(
         BoxConstraints(
             maxWidth: MediaQuery.of(context).size.width,
@@ -92,40 +58,45 @@ class _CadastroState extends State<Cadastro> {
         minTextAdapt: true,
         orientation: Orientation.portrait);
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: Strings.kDarkBlueColor,
       body: Column(
         children: [
           Container(
               alignment: Alignment.center,
               margin: EdgeInsets.only(top: 450.h),
-              child: Text(
-                Strings.textMensagemCadastro,
+              child: Text(Strings.textMensagemCadastro,
                 style: TextStyle(
                   color: Strings.kPrimaryColor,
                   fontWeight: FontWeight.normal,
                   fontSize: 50.sp,
                 ),
               )),
+
           Container(
             width: 1000.w,
             margin: EdgeInsets.only(top: 50.h),
             child: TextField(
               controller: _controllerNome,
               decoration: InputDecoration(
-                  contentPadding:
-                      EdgeInsets.symmetric(vertical: 40.h, horizontal: 50.w),
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(
-                    Radius.circular(35.r),
-                  )),
+                contentPadding:
+                EdgeInsets.symmetric(vertical: 40.h, horizontal: 50.w),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(
+                      Radius.circular(35.r),
+                  )
+                ),
                   enabledBorder: OutlineInputBorder(
-                      borderSide:
-                          BorderSide(color: Strings.kPrimaryColor, width: 5.sp),
+                      borderSide: BorderSide(color: Strings.kPrimaryColor, width: 5.sp),
                       borderRadius: BorderRadius.all(
                         Radius.circular(35.r),
-                      )),
-                  hintText: Strings.textNome,
-                  hintStyle: const TextStyle(color: Strings.kPrimaryColor)),
+                      )
+                  ),
+                hintText: Strings.textNome,
+                hintStyle: const TextStyle(
+                  color: Strings.kPrimaryColor
+                )
+              ),
             ),
           ),
           Container(
@@ -135,41 +106,23 @@ class _CadastroState extends State<Cadastro> {
               controller: _controllerEmail,
               decoration: InputDecoration(
                   contentPadding:
-                      EdgeInsets.symmetric(vertical: 40.h, horizontal: 50.w),
+                  EdgeInsets.symmetric(vertical: 40.h, horizontal: 50.w),
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.all(
-                    Radius.circular(35.r),
-                  )),
+                        Radius.circular(35.r),
+                      )
+                  ),
                   enabledBorder: OutlineInputBorder(
-                      borderSide:
-                          BorderSide(color: Strings.kPrimaryColor, width: 5.sp),
+                      borderSide: BorderSide(color: Strings.kPrimaryColor, width: 5.sp),
                       borderRadius: BorderRadius.all(
                         Radius.circular(35.r),
-                      )),
+                      )
+                  ),
                   hintText: Strings.textEmail,
-                  hintStyle: const TextStyle(color: Strings.kPrimaryColor)),
-            ),
-          ),
-          Container(
-            width: 1000.w,
-            margin: EdgeInsets.only(top: 50.h),
-            child: TextField(
-              obscureText: true,
-              decoration: InputDecoration(
-                  contentPadding:
-                      EdgeInsets.symmetric(vertical: 40.h, horizontal: 50.w),
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(
-                    Radius.circular(35.r),
-                  )),
-                  enabledBorder: OutlineInputBorder(
-                      borderSide:
-                          BorderSide(color: Strings.kPrimaryColor, width: 5.sp),
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(35.r),
-                      )),
-                  hintText: Strings.textSenha,
-                  hintStyle: const TextStyle(color: Strings.kPrimaryColor)),
+                  hintStyle: const TextStyle(
+                      color: Strings.kPrimaryColor
+                  )
+              ),
             ),
           ),
           Container(
@@ -188,46 +141,35 @@ class _CadastroState extends State<Cadastro> {
                 ),
                 style: ButtonStyle(
                     backgroundColor:
-                        MaterialStateProperty.all<Color>(Strings.kGreyColor),
-                    side:
-                        MaterialStateProperty.all<BorderSide>(BorderSide.none)),
-              )),
-          Padding(padding: EdgeInsets.only(bottom: 30.h)),
-          buildRowDivider(size: size),
-          Padding(padding: EdgeInsets.only(bottom: 30.h)),
-          Center(
-            child: Container(
-              padding: EdgeInsets.only(top: 40.h),
-              child: const GoogleSignIn(),
-            ),
+                    MaterialStateProperty.all<Color>(Strings.kGreyColor),
+                    side: MaterialStateProperty.all<BorderSide>(BorderSide.none)),
+              )
           ),
+
           Center(
             child: Container(
               width: 300.w,
-              margin: EdgeInsets.only(top: 300.h),
-              child: Image.asset("assets/logo_final-min.png",
-                  color: Strings.kPrimaryColor),
+              margin: EdgeInsets.only(top: 740.h),
+              child: Image.asset("assets/logo_final-min.png",color: Strings.kPrimaryColor),
+            ),
+          ),
+          Container(
+            margin: EdgeInsets.only(top: 20.h,bottom: 10.h),
+            child: Text(
+              _mensagemErro,
+              style: TextStyle(
+                  color: Colors.red,
+                  fontSize: 45.sp
+              ),
             ),
           )
+
         ],
       ),
     );
   }
 
-  Widget buildRowDivider({required Size size}) {
-    return Container(
-      width: 870.w,
-      margin: EdgeInsets.only(top: 50.w),
-      child: Row(children: <Widget>[
-        const Expanded(child: Divider(color: Strings.kPrimaryColor)),
-        Padding(
-            padding: EdgeInsets.only(left: 45.w, right: 45.w),
-            child: const Text(
-              Strings.textOu,
-              style: TextStyle(color: Strings.kPrimaryColor),
-            )),
-        const Expanded(child: Divider(color: Strings.kPrimaryColor)),
-      ]),
-    );
-  }
+
 }
+
+

@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:turbinagram/utils/strings.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Entrar extends StatefulWidget {
   const Entrar({Key? key}) : super(key: key);
@@ -38,8 +37,9 @@ class _EntrarState extends State<Entrar> {
   }
 
   Future _recuperarDadosUsuario() async {
-    User? result = FirebaseAuth.instance.currentUser;
-    if (result != null) {
+    final prefs = await SharedPreferences.getInstance();
+    final List<String>? dados = prefs.getStringList('dados');
+    if (dados != null) {
       Navigator.pushReplacementNamed(context, Strings.homeNavigate);
     } else {
       setState(() {
