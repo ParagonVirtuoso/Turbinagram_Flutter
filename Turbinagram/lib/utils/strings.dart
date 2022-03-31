@@ -24,6 +24,8 @@ class Strings {
   static const textEmail = "E-mail";
   static const textSenha = "Senha";
   static const textOu = "OU";
+  static const textOla = "Olá, ";
+  static const textHomeServico = "Principais Serviços";
 
   //navigate
   static const signInNavigate = '/sign-in';
