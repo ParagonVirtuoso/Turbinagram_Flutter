@@ -10,8 +10,10 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.pink,
+    return Scaffold(
+      body: Container(
+        color: Colors.pink,
+      ),
     );
   }
 }

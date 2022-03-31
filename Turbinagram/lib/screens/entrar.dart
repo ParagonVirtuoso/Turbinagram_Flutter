@@ -4,8 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:turbinagram/utils/strings.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:turbinagram/widgets/googlesignin.dart';
-
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 class Entrar extends StatefulWidget {
   const Entrar({Key? key}) : super(key: key);
 
@@ -24,9 +23,14 @@ class _EntrarState extends State<Entrar> {
   int _current = 0;
   final CarouselController _controller = CarouselController();
 
+  late double _alturaTexto = 400.h;
+
+  late Color _corTexto = Strings.kPrimaryColor;
+
   @override
   void initState() {
     super.initState();
+
     SchedulerBinding.instance
         ?.addPostFrameCallback((_) => _recuperarDadosUsuario());
   }
@@ -103,6 +107,18 @@ class _EntrarState extends State<Entrar> {
                     onPageChanged: (index, reason) {
                       setState(() {
                         _current = index;
+                        if (index == 0) {
+                          _alturaTexto = 400.h;
+                          _corTexto = Strings.kPrimaryColor;
+                        }
+                        if (index == 1) {
+                          _alturaTexto = 800.h;
+                          _corTexto = Strings.kDarkBlueColor;
+                        }
+                        if (index == 2) {
+                          _alturaTexto = 1300.h;
+                          _corTexto = Strings.kPrimaryColor;
+                        }
                       });
                     })),
             Column(
@@ -134,30 +150,55 @@ class _EntrarState extends State<Entrar> {
             ),
             Center(
               child: Container(
+                width: 900.w,
                 padding: EdgeInsets.only(top: 1500.h),
-                child: const GoogleSignIn(),
+                child: OutlinedButton.icon(
+                  icon: const FaIcon(FontAwesomeIcons.instagram,color: Strings.kDarkGreyColor),
+                  onPressed: ()  {
+                    Navigator.pushNamedAndRemoveUntil(
+                        context, Strings.cadastroNavigate, (route) => false);
+                  },
+                  label: Text(
+                    Strings.textSignIn,
+                    style: TextStyle(
+                        color: Strings.kBlackColor,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 35.sp),
+                  ),
+                  style: ButtonStyle(
+                      backgroundColor:
+                      MaterialStateProperty.all<Color>(Strings.kGreyColor),
+                      side: MaterialStateProperty.all<BorderSide>(BorderSide.none)),
+                )
               ),
             ),
             Container(
               alignment: Alignment.bottomLeft,
-              padding: EdgeInsets.only(left: 110.w, bottom: 400.h),
+              padding: EdgeInsets.only(left: 110.w, bottom: _alturaTexto),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.end,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(Strings.textEntrarSlogan1,
                       style: TextStyle(
-                        color: Strings.kPrimaryColor,
+                        color: _corTexto,
                         fontWeight: FontWeight.normal,
                         fontSize: 90.sp,
                       )),
                   Text(Strings.textEntrarSlogan2,
                       style: TextStyle(
-                        color: Strings.kPrimaryColor,
+                        color: _corTexto,
                         fontWeight: FontWeight.bold,
                         fontSize: 90.sp,
                       ))
                 ],
+              ),
+            ),
+            Center(
+              child: Container(
+                width: 100.w,
+                padding: EdgeInsets.only(bottom: 1300.h),
+                child: Image.asset("assets/logo_final-pequeno.png",color: Strings.kDarkGreyColor.withOpacity(0.5)),
               ),
             )
           ],

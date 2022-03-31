@@ -14,13 +14,20 @@ class Strings {
   static const title = "Continuar Com o Google";
   static const textEntrarSlogan1 = "Tornando suas";
   static const textEntrarSlogan2 = "ideias em realidade";
+  static const textSignIn = "ENTRAR NA TECNOTRIKS";
+  static const textTudocerto = "ok, tudo certo";
   static const textSignInGoogle = "ENTRAR NA TECNOTRIKS COM O GOOGLE";
   static const textFalha = "Falha";
+  static const textMensagemCadastro = "Olá, queremos te conhecer!";
   static const textOk = "Ok";
+  static const textNome = "Seu Nome";
+  static const textEmail = "E-mail";
+  static const textOu = "OU";
 
   //navigate
   static const signInNavigate = '/sign-in';
   static const homeNavigate = '/home';
+  static const cadastroNavigate = '/cadastro';
 
   static const statusBarColor = SystemUiOverlayStyle(
       statusBarColor: Strings.kPrimaryColor,
