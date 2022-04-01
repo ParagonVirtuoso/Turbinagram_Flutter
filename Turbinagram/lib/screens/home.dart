@@ -179,7 +179,10 @@ class _HomeState extends State<Home> {
                         bottomRight: Radius.circular(30.r),
                       )),
                   child: OutlinedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushNamed(
+                          context, Strings.cadastroNavigate);
+                    },
 
                     style: OutlinedButton.styleFrom(
                         alignment: Alignment.topRight,
