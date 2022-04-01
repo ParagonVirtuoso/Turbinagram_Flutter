@@ -12,7 +12,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  late List<String>? dados = [];
+  late List<String>? dados = [''];
 
   @override
   void initState() {
