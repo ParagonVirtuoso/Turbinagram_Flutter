@@ -35,6 +35,7 @@ class Strings {
   static const signInNavigate = '/sign-in';
   static const homeNavigate = '/home';
   static const cadastroNavigate = '/cadastro';
+  static const turbinagramInicialNavigate = '/turbinagram_inicial';
 
   static const statusBarColor = SystemUiOverlayStyle(
       statusBarColor: Strings.kPrimaryColor,
