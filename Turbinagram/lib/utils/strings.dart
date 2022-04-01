@@ -8,7 +8,7 @@ class Strings {
   static const kBlackColor = Color(0xFF000000);
   static const kDarkGreyColor = Color(0xFF9E9E9E);
   static const kPDarkGreyColor = Color(0xFF878787);
-  static const kDarkBlueColor = Color(0xFF6057FF);
+  static const kDarkBlueColor = Color(0xFF0473ff);
   static const kBorderColor = Color(0xFFEFEFEF);
   static const kTurbinaColor = Color(0xFFEb2b5c);
 
