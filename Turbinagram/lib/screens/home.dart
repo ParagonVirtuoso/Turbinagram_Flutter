@@ -181,7 +181,7 @@ class _HomeState extends State<Home> {
                   child: OutlinedButton(
                     onPressed: () {
                       Navigator.pushNamed(
-                          context, Strings.cadastroNavigate);
+                          context, Strings.turbinagramInicialNavigate);
                     },
 
                     style: OutlinedButton.styleFrom(
