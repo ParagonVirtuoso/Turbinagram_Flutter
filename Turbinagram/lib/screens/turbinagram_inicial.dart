@@ -16,13 +16,21 @@ class _TurbinagramInicialState extends State<TurbinagramInicial> {
       color: Strings.kPrimaryColor,
       child: SafeArea(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Container(
-              padding: EdgeInsets.only(top: 50.h),
-              color: Strings.kTurbinaColor,
-              child: Image.asset("assets/logo_final-pequeno.png",color: Strings.kPrimaryColor),
+              padding: EdgeInsets.only(top: 80.h,left: 20.w,right: 20.w,bottom: 25.h),
+              decoration: BoxDecoration(
+                  color: Strings.kTurbinaColor,
+                  borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(30.r),
+                    bottomRight: Radius.circular(30.r),
+                  )),
+              child: Image.asset("assets/logo_final-pequeno.png",color: Strings.kPrimaryColor,alignment: Alignment.topCenter,),
+            ),
+            Container(
+              child: Image.asset("assets/logo_final-pequeno.png",color: Strings.kPrimaryColor,alignment: Alignment.topCenter,),
             )
           ],
         ),
