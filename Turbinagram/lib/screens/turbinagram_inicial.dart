@@ -12,16 +12,21 @@ class TurbinagramInicial extends StatefulWidget {
 class _TurbinagramInicialState extends State<TurbinagramInicial> {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Center(
-          child: Container(
-            width: 100.w,
-            padding: EdgeInsets.only(bottom: 1300.h),
-            child: Image.asset("assets/logo_final-pequeno.png",color: Strings.kDarkGreyColor.withOpacity(0.5)),
-          ),
-        )
-      ],
+    return Container(
+      color: Strings.kPrimaryColor,
+      child: SafeArea(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Container(
+              padding: EdgeInsets.only(top: 50.h),
+              color: Strings.kTurbinaColor,
+              child: Image.asset("assets/logo_final-pequeno.png",color: Strings.kPrimaryColor),
+            )
+          ],
+        ),
+      ),
     );
   }
 }
