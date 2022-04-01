@@ -68,7 +68,10 @@ class _HomeState extends State<Home> {
                               color: Strings.kPrimaryColor, fontSize: 45.sp)),
                       Text(dados![0].toString().toUpperCase(),
                           style: TextStyle(
-                              color: Strings.kPrimaryColor, fontSize: 46.sp,fontWeight: FontWeight.bold,))
+                            color: Strings.kPrimaryColor,
+                            fontSize: 46.sp,
+                            fontWeight: FontWeight.bold,
+                          ))
                     ],
                   ),
                 ),
@@ -93,9 +96,15 @@ class _HomeState extends State<Home> {
                       topRight: Radius.circular(30.r),
                       bottomRight: Radius.circular(30.r),
                     )),
-                child: Container(
-                  margin: EdgeInsets.only(left: 30.w,right: 30.w,top: 30.h),
+                child: OutlinedButton(
+                  onPressed: () {},
+
+                  style: OutlinedButton.styleFrom(
+                    alignment: Alignment.topLeft,
+                    padding: EdgeInsets.only(top: 30.h,left: 30.w),
+                  ),
                   child: Text(Strings.textServico1,
+                      textAlign: TextAlign.left,
                       style: TextStyle(
                           color: Strings.kPrimaryColor, fontSize: 45.sp)),
                 ),
@@ -108,7 +117,7 @@ class _HomeState extends State<Home> {
                     Container(
                       width: 500.w,
                       height: 350.h,
-                      margin: EdgeInsets.only(top: 20.h,left:35.w),
+                      margin: EdgeInsets.only(top: 20.h, left: 35.w),
                       decoration: BoxDecoration(
                           color: Strings.kDarkBlueColor,
                           borderRadius: BorderRadius.only(
@@ -117,9 +126,15 @@ class _HomeState extends State<Home> {
                             topRight: Radius.circular(30.r),
                             bottomRight: Radius.circular(30.r),
                           )),
-                      child: Container(
-                        margin: EdgeInsets.only(left: 30.w,right: 30.w,top: 30.h),
+                      child: OutlinedButton(
+                        onPressed: () {},
+
+                        style: OutlinedButton.styleFrom(
+                          alignment: Alignment.topLeft,
+                          padding: EdgeInsets.only(top: 30.h,left: 30.w),
+                        ),
                         child: Text(Strings.textServico2,
+                            textAlign: TextAlign.left,
                             style: TextStyle(
                                 color: Strings.kPrimaryColor, fontSize: 45.sp)),
                       ),
@@ -127,7 +142,7 @@ class _HomeState extends State<Home> {
                     Container(
                       width: 500.w,
                       height: 350.h,
-                      margin: EdgeInsets.only(top: 20.h,left:35.w),
+                      margin: EdgeInsets.only(top: 20.h, left: 35.w),
                       decoration: BoxDecoration(
                           color: Strings.kDarkBlueColor,
                           borderRadius: BorderRadius.only(
@@ -136,20 +151,25 @@ class _HomeState extends State<Home> {
                             topRight: Radius.circular(30.r),
                             bottomRight: Radius.circular(30.r),
                           )),
-                      child: Container(
-                        margin: EdgeInsets.only(left: 30.w,right: 30.w,top: 30.h),
+                      child: OutlinedButton(
+                        onPressed: () {},
+
+                        style: OutlinedButton.styleFrom(
+                          alignment: Alignment.topLeft,
+                          padding: EdgeInsets.only(top: 30.h,left: 30.w),
+                        ),
                         child: Text(Strings.textServico3,
+                            textAlign: TextAlign.left,
                             style: TextStyle(
                                 color: Strings.kPrimaryColor, fontSize: 45.sp)),
                       ),
                     )
                   ],
-
                 ),
                 Container(
                   width: 500.w,
                   height: 720.h,
-                  margin: EdgeInsets.only(top: 20.h,left:15.w,right: 30.w),
+                  margin: EdgeInsets.only(top: 20.h, left: 15.w, right: 30.w),
                   decoration: BoxDecoration(
                       color: Strings.kDarkBlueColor,
                       borderRadius: BorderRadius.only(
@@ -158,8 +178,13 @@ class _HomeState extends State<Home> {
                         topRight: Radius.circular(30.r),
                         bottomRight: Radius.circular(30.r),
                       )),
-                  child: Container(
-                    margin: EdgeInsets.only(left: 30.w,right: 30.w,top: 30.h),
+                  child: OutlinedButton(
+                    onPressed: () {},
+
+                    style: OutlinedButton.styleFrom(
+                        alignment: Alignment.topRight,
+                      padding: EdgeInsets.only(top: 30.h,right: 30.w),
+                    ),
                     child: Text(Strings.textServico4,
                         textAlign: TextAlign.right,
                         style: TextStyle(
