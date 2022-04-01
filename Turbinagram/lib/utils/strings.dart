@@ -9,6 +9,7 @@ class Strings {
   static const kDarkGreyColor = Color(0xFF9E9E9E);
   static const kDarkBlueColor = Color(0xFF6057FF);
   static const kBorderColor = Color(0xFFEFEFEF);
+  static const kTurbinaColor = Color(0xFFEb2b5c);
 
   //text
   static const title = "Continuar Com o Google";
